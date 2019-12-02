@@ -1,7 +1,7 @@
 {
-  "name": "@glasswing/common",
+  "name": "@glasswing/controller",
   "version": "0.0.1",
-  "description": "GlassWingJs Common Package",
+  "description": "GlassWingJs Controller Package",
   "main": "dist/commonjs/index.js",
   "scripts": {
     "build": "rollup -c --environment NODE_ENV:production",
@@ -24,14 +24,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/glasswingjs/common.git"
+    "url": "git+https://github.com/glasswingjs/controller.git"
   },
   "author": "Dragos Cirjan",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/glasswingjs/common/issues"
+    "url": "https://github.com/glasswingjs/controller/issues"
   },
-  "homepage": "https://github.com/glasswingjs/common#readme",
+  "homepage": "https://github.com/glasswingjs/controller#readme",
   "devDependencies": {
     "@types/chai": "^4.2.3",
     "@types/finalhandler": "^1.1.0",
@@ -61,7 +61,11 @@
     "yorkie": "^2.0.0"
   },
   "types": "dist/index.d.ts",
-  "dependencies": {},
+  "dependencies": {
+    "@glasswing/common": "github:glasswingjs/common#master",
+    "@glasswing/http": "github:glasswingjs/http#master",
+    "@glasswing/router": "github:glasswingjs/router#master"
+  },
   "gitHooks": {
     "pre-commit": "npm run git-hook:pre-commit && git add ."
   }
