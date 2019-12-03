@@ -1,4 +1,5 @@
 import 'reflect-metadata'
+
 import {ROUTE_REGISTRY_METADATA_NAME, RouteRegistry} from '@glasswing/router'
 
 /**
@@ -6,7 +7,6 @@ import {ROUTE_REGISTRY_METADATA_NAME, RouteRegistry} from '@glasswing/router'
  */
 export class AbstractController {
   constructor() {
-    console.log('test', this)
     if (!Reflect.hasMetadata(ROUTE_REGISTRY_METADATA_NAME, this)) {
       Reflect.defineMetadata(ROUTE_REGISTRY_METADATA_NAME, new RouteRegistry(), this)
     }

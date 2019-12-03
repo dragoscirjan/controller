@@ -5,7 +5,7 @@ import {ROUTE_REGISTRY_METADATA_NAME, RouteRegistry} from '@glasswing/router'
 import {expect} from 'chai'
 import {container} from 'tsyringe'
 
-import { AbstractController} from '../src'
+import {AbstractController} from '../src'
 
 @Singleton()
 class TestController extends AbstractController {
