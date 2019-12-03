@@ -1,17 +1,32 @@
 import 'reflect-metadata'
-import {RouteRegistry} from '@glasswing/router'
+import {Singleton} from '@glasswing/common'
+import {ROUTE_REGISTRY_METADATA_NAME, RouteRegistry} from '@glasswing/router'
+
+interface ClassConstructor {
+  new(...args: any[]): {}
+}
 
 /**
  * @Controller() decorator.
  *
  * @returns {ClassDecorator}
  */
-export function Controller(): ClassDecorator {
-  return (target: any): void => {
-    if (!Reflect.hasMetadata('routeRegistry', target)) {
-      Reflect.defineMetadata('routeRegistry', new RouteRegistry(), target)
+export const Controller = (): any => {
+  return <T extends ClassConstructor>(constr:T) => {
+
+    Singleton()
+    class extended extends constr {
+      constructor(...args: any[]) {
+        super(...args)
+
+        if (!Reflect.hasMetadata(ROUTE_REGISTRY_METADATA_NAME, this)) {
+          Reflect.defineMetadata(ROUTE_REGISTRY_METADATA_NAME, new RouteRegistry(), this)
+        }
+
+      }
     }
 
-    Singleton()(target)
+    return extended
+
   }
 }
