@@ -5,10 +5,10 @@ export declare class AbstractController {
 	constructor();
 }
 /**
- * @Controller() decorator.
+ * Comment
  *
  * @returns {ClassDecorator}
  */
-export declare const Controller: () => ClassDecorator;
+export declare const Controller: () => any;
 
 export {};

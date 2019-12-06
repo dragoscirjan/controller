@@ -52,14 +52,14 @@ System.register(['reflect-metadata', '@glasswing/router', '@glasswing/common'], 
       }
 
       /**
-       * @Controller() decorator.
+       * Comment
        *
        * @returns {ClassDecorator}
        */
       var Controller = exports('Controller', function () { return function (target) {
-          var Extended = /** @class */ (function (_super) {
-              __extends(Extended, _super);
-              function Extended() {
+          var extended = /** @class */ (function (_super) {
+              __extends(class_1, _super);
+              function class_1() {
                   var args = [];
                   for (var _i = 0; _i < arguments.length; _i++) {
                       args[_i] = arguments[_i];
@@ -70,10 +70,10 @@ System.register(['reflect-metadata', '@glasswing/router', '@glasswing/common'], 
                   }
                   return _this;
               }
-              return Extended;
+              return class_1;
           }(target));
-          Singleton()(Extended);
-          return Extended;
+          Singleton()(extended);
+          return extended;
       }; });
 
     }

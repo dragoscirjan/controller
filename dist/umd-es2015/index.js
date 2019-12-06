@@ -16,21 +16,21 @@
   }
 
   /**
-   * @Controller() decorator.
+   * Comment
    *
    * @returns {ClassDecorator}
    */
   const Controller = () => (target) => {
-      class Extended extends target {
+      const extended = class extends target {
           constructor(...args) {
               super(...args);
               if (!Reflect.hasMetadata(router.ROUTE_REGISTRY_METADATA_NAME, this)) {
                   Reflect.defineMetadata(router.ROUTE_REGISTRY_METADATA_NAME, new router.RouteRegistry(), this);
               }
           }
-      }
-      common.Singleton()(Extended);
-      return Extended;
+      };
+      common.Singleton()(extended);
+      return extended;
   };
 
   exports.AbstractController = AbstractController;

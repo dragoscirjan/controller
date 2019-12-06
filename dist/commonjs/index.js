@@ -48,14 +48,14 @@ function __extends(d, b) {
 }
 
 /**
- * @Controller() decorator.
+ * Comment
  *
  * @returns {ClassDecorator}
  */
 var Controller = function () { return function (target) {
-    var Extended = /** @class */ (function (_super) {
-        __extends(Extended, _super);
-        function Extended() {
+    var extended = /** @class */ (function (_super) {
+        __extends(class_1, _super);
+        function class_1() {
             var args = [];
             for (var _i = 0; _i < arguments.length; _i++) {
                 args[_i] = arguments[_i];
@@ -66,10 +66,10 @@ var Controller = function () { return function (target) {
             }
             return _this;
         }
-        return Extended;
+        return class_1;
     }(target));
-    common.Singleton()(Extended);
-    return Extended;
+    common.Singleton()(extended);
+    return extended;
 }; };
 
 exports.AbstractController = AbstractController;

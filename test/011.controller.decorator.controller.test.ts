@@ -9,6 +9,16 @@ import {Controller} from '../src'
 
 @Controller()
 class TestController {
+  private a: number = 0
+
+  constructor() {
+    this.a++
+  }
+
+  public getA(): number {
+    return this.a
+  }
+
   public helloWorld(): string {
     return 'Hello World!'
   }
@@ -25,21 +35,29 @@ describe('lib/controller/decorators => @Controller', () => {
   })
   it('Controller::constructor() will return an object', () => {
     expect(controller).to.be.an('object')
+
+    expect(controller.getA()).to.equal(1)
   })
 
   it('Controller::constructor() routeRegistry metadata to be a RouteRegistry instance', () => {
     expect(gmd(ROUTE_REGISTRY_METADATA_NAME, controller)).to.be.an('object')
     expect(gmd(ROUTE_REGISTRY_METADATA_NAME, controller) instanceof RouteRegistry).to.be.true
+
+    expect(controller.getA()).to.equal(1)
   })
 
   it('Controller::inject() will return an object', () => {
     const anotherController = container.resolve(TestController)
     expect(anotherController).to.be.an('object')
+
+    expect(controller.getA()).to.equal(1)
   })
 
   it('Controller::inject() routeRegistry metadata to be a RouteRegistry instance', () => {
     const anotherController = container.resolve(TestController)
     expect(gmd(ROUTE_REGISTRY_METADATA_NAME, anotherController)).to.be.an('object')
     expect(gmd(ROUTE_REGISTRY_METADATA_NAME, anotherController) instanceof RouteRegistry).to.be.true
+
+    expect(controller.getA()).to.equal(1)
   })
 })
