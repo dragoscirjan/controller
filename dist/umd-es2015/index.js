@@ -20,19 +20,17 @@
    *
    * @returns {ClassDecorator}
    */
-  const Controller = () => {
-      return (constr) => {
-          common.Singleton();
-          class Extended extends constr {
-              constructor(...args) {
-                  super(...args);
-                  if (!Reflect.hasMetadata(router.ROUTE_REGISTRY_METADATA_NAME, this)) {
-                      Reflect.defineMetadata(router.ROUTE_REGISTRY_METADATA_NAME, new router.RouteRegistry(), this);
-                  }
+  const Controller = () => (target) => {
+      class Extended extends target {
+          constructor(...args) {
+              super(...args);
+              if (!Reflect.hasMetadata(router.ROUTE_REGISTRY_METADATA_NAME, this)) {
+                  Reflect.defineMetadata(router.ROUTE_REGISTRY_METADATA_NAME, new router.RouteRegistry(), this);
               }
           }
-          return Extended;
-      };
+      }
+      common.Singleton()(Extended);
+      return Extended;
   };
 
   exports.AbstractController = AbstractController;

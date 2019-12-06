@@ -9,6 +9,6 @@ export declare class AbstractController {
  *
  * @returns {ClassDecorator}
  */
-export declare const Controller: () => any;
+export declare const Controller: () => ClassDecorator;
 
 export {};

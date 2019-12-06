@@ -48,26 +48,24 @@ function __extends(d, b) {
  *
  * @returns {ClassDecorator}
  */
-var Controller = function () {
-    return function (constr) {
-        Singleton();
-        var Extended = /** @class */ (function (_super) {
-            __extends(Extended, _super);
-            function Extended() {
-                var args = [];
-                for (var _i = 0; _i < arguments.length; _i++) {
-                    args[_i] = arguments[_i];
-                }
-                var _this = _super.apply(this, args) || this;
-                if (!Reflect.hasMetadata(ROUTE_REGISTRY_METADATA_NAME, _this)) {
-                    Reflect.defineMetadata(ROUTE_REGISTRY_METADATA_NAME, new RouteRegistry(), _this);
-                }
-                return _this;
+var Controller = function () { return function (target) {
+    var Extended = /** @class */ (function (_super) {
+        __extends(Extended, _super);
+        function Extended() {
+            var args = [];
+            for (var _i = 0; _i < arguments.length; _i++) {
+                args[_i] = arguments[_i];
             }
-            return Extended;
-        }(constr));
+            var _this = _super.apply(this, args) || this;
+            if (!Reflect.hasMetadata(ROUTE_REGISTRY_METADATA_NAME, _this)) {
+                Reflect.defineMetadata(ROUTE_REGISTRY_METADATA_NAME, new RouteRegistry(), _this);
+            }
+            return _this;
+        }
         return Extended;
-    };
-};
+    }(target));
+    Singleton()(Extended);
+    return Extended;
+}; };
 
 export { AbstractController, Controller };

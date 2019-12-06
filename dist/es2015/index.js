@@ -18,19 +18,17 @@ class AbstractController {
  *
  * @returns {ClassDecorator}
  */
-const Controller = () => {
-    return (constr) => {
-        Singleton();
-        class Extended extends constr {
-            constructor(...args) {
-                super(...args);
-                if (!Reflect.hasMetadata(ROUTE_REGISTRY_METADATA_NAME, this)) {
-                    Reflect.defineMetadata(ROUTE_REGISTRY_METADATA_NAME, new RouteRegistry(), this);
-                }
+const Controller = () => (target) => {
+    class Extended extends target {
+        constructor(...args) {
+            super(...args);
+            if (!Reflect.hasMetadata(ROUTE_REGISTRY_METADATA_NAME, this)) {
+                Reflect.defineMetadata(ROUTE_REGISTRY_METADATA_NAME, new RouteRegistry(), this);
             }
         }
-        return Extended;
-    };
+    }
+    Singleton()(Extended);
+    return Extended;
 };
 
 export { AbstractController, Controller };

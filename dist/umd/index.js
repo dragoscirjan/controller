@@ -50,27 +50,25 @@
    *
    * @returns {ClassDecorator}
    */
-  var Controller = function () {
-      return function (constr) {
-          common.Singleton();
-          var Extended = /** @class */ (function (_super) {
-              __extends(Extended, _super);
-              function Extended() {
-                  var args = [];
-                  for (var _i = 0; _i < arguments.length; _i++) {
-                      args[_i] = arguments[_i];
-                  }
-                  var _this = _super.apply(this, args) || this;
-                  if (!Reflect.hasMetadata(router.ROUTE_REGISTRY_METADATA_NAME, _this)) {
-                      Reflect.defineMetadata(router.ROUTE_REGISTRY_METADATA_NAME, new router.RouteRegistry(), _this);
-                  }
-                  return _this;
+  var Controller = function () { return function (target) {
+      var Extended = /** @class */ (function (_super) {
+          __extends(Extended, _super);
+          function Extended() {
+              var args = [];
+              for (var _i = 0; _i < arguments.length; _i++) {
+                  args[_i] = arguments[_i];
               }
-              return Extended;
-          }(constr));
+              var _this = _super.apply(this, args) || this;
+              if (!Reflect.hasMetadata(router.ROUTE_REGISTRY_METADATA_NAME, _this)) {
+                  Reflect.defineMetadata(router.ROUTE_REGISTRY_METADATA_NAME, new router.RouteRegistry(), _this);
+              }
+              return _this;
+          }
           return Extended;
-      };
-  };
+      }(target));
+      common.Singleton()(Extended);
+      return Extended;
+  }; };
 
   exports.AbstractController = AbstractController;
   exports.Controller = Controller;
