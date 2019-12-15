@@ -59,9 +59,9 @@
   },
   "types": "dist/index.d.ts",
   "dependencies": {
-    "@glasswing/common": "github:glasswingjs/common#master",
-    "@glasswing/http": "github:glasswingjs/http#master",
-    "@glasswing/router": "github:glasswingjs/router#master"
+    "@glasswing/common": "github:glasswingjs/common#7d58794",
+    "@glasswing/http": "github:glasswingjs/http#5d448cc",
+    "@glasswing/router": "github:glasswingjs/router#75b9cd6"
   },
   "gitHooks": {
     "pre-commit": "npm run git-hook:pre-commit && git add ."
