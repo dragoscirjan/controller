@@ -1,6 +1,5 @@
 import 'reflect-metadata'
 
-import {RequestMethod} from '@glasswing/http'
 import {ROUTE_REGISTRY_METADATA_NAME, RouteRegistry} from '@glasswing/router'
 import {expect} from 'chai'
 import {container} from 'tsyringe'

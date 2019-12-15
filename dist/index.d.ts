@@ -1,14 +1,15 @@
 /**
  * Abstract Controller class.
  */
-export declare class AbstractController {
-	constructor();
+declare class AbstractController {
+    constructor();
 }
+
 /**
  * Comment
  *
  * @returns {ClassDecorator}
  */
-export declare const Controller: () => any;
+declare const Controller: () => any;
 
-export {};
+export { AbstractController, Controller };
