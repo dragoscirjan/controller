@@ -1,12 +1,11 @@
 import 'reflect-metadata'
-import {Singleton} from '@glasswing/common'
 import {ROUTE_REGISTRY_METADATA_NAME, RouteRegistry} from '@glasswing/router'
 import {expect} from 'chai'
-import {container} from 'tsyringe'
+import {container, singleton} from 'tsyringe'
 
 import {AbstractController} from '../src'
 
-@Singleton()
+@singleton()
 class TestController extends AbstractController {
   public helloWorld(): string {
     return 'Hello World!'

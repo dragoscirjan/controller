@@ -1,4 +1,4 @@
-define('index', ['exports', 'reflect-metadata', '@glasswing/router', '@glasswing/common'], function (exports, reflectMetadata, router, common) { 'use strict';
+define('index', ['exports', 'reflect-metadata', '@glasswing/router', 'tsyringe'], function (exports, reflectMetadata, router, tsyringe) { 'use strict';
 
   /**
    * Abstract Controller class.
@@ -62,7 +62,7 @@ define('index', ['exports', 'reflect-metadata', '@glasswing/router', '@glasswing
           }
           return class_1;
       }(target));
-      common.Singleton()(extended);
+      tsyringe.singleton()(extended);
       return extended;
   }; };
 

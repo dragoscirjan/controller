@@ -4,7 +4,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 require('reflect-metadata');
 var router = require('@glasswing/router');
-var common = require('@glasswing/common');
+var tsyringe = require('tsyringe');
 
 /**
  * Abstract Controller class.
@@ -68,7 +68,7 @@ var Controller = function () { return function (target) {
         }
         return class_1;
     }(target));
-    common.Singleton()(extended);
+    tsyringe.singleton()(extended);
     return extended;
 }; };
 

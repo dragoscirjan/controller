@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import { ROUTE_REGISTRY_METADATA_NAME, RouteRegistry } from '@glasswing/router';
-import { Singleton } from '@glasswing/common';
+import { singleton } from 'tsyringe';
 
 /**
  * Abstract Controller class.
@@ -64,7 +64,7 @@ var Controller = function () { return function (target) {
         }
         return class_1;
     }(target));
-    Singleton()(extended);
+    singleton()(extended);
     return extended;
 }; };
 

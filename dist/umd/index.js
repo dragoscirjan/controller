@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('reflect-metadata'), require('@glasswing/router'), require('@glasswing/common')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'reflect-metadata', '@glasswing/router', '@glasswing/common'], factory) :
-  (global = global || self, factory((global.gw = global.gw || {}, global.gw.common = {}), null, global.router, global.common));
-}(this, (function (exports, reflectMetadata, router, common) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('reflect-metadata'), require('@glasswing/router'), require('tsyringe')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'reflect-metadata', '@glasswing/router', 'tsyringe'], factory) :
+  (global = global || self, factory((global.gw = global.gw || {}, global.gw.common = {}), null, global.router, global.tsyringe));
+}(this, (function (exports, reflectMetadata, router, tsyringe) { 'use strict';
 
   /**
    * Abstract Controller class.
@@ -66,7 +66,7 @@
           }
           return class_1;
       }(target));
-      common.Singleton()(extended);
+      tsyringe.singleton()(extended);
       return extended;
   }; };
 

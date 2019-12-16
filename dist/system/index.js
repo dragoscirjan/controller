@@ -1,12 +1,12 @@
-System.register(['reflect-metadata', '@glasswing/router', '@glasswing/common'], function (exports) {
+System.register(['reflect-metadata', '@glasswing/router', 'tsyringe'], function (exports) {
   'use strict';
-  var ROUTE_REGISTRY_METADATA_NAME, RouteRegistry, Singleton;
+  var ROUTE_REGISTRY_METADATA_NAME, RouteRegistry, singleton;
   return {
     setters: [function () {}, function (module) {
       ROUTE_REGISTRY_METADATA_NAME = module.ROUTE_REGISTRY_METADATA_NAME;
       RouteRegistry = module.RouteRegistry;
     }, function (module) {
-      Singleton = module.Singleton;
+      singleton = module.singleton;
     }],
     execute: function () {
 
@@ -72,7 +72,7 @@ System.register(['reflect-metadata', '@glasswing/router', '@glasswing/common'], 
               }
               return class_1;
           }(target));
-          Singleton()(extended);
+          singleton()(extended);
           return extended;
       }; });
 

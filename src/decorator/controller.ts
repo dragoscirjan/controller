@@ -1,7 +1,7 @@
 import 'reflect-metadata'
 
-import {Singleton} from '@glasswing/common'
 import {ROUTE_REGISTRY_METADATA_NAME, RouteRegistry} from '@glasswing/router'
+import {singleton} from 'tsyringe'
 
 /**
  * Comment
@@ -17,6 +17,6 @@ export const Controller = (): any => <T extends new (...args: any[]) => {}>(targ
       }
     }
   }
-  Singleton()(extended)
+  singleton()(extended)
   return extended
 }
