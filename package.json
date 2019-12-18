@@ -58,9 +58,9 @@
   },
   "types": "dist/index.d.ts",
   "dependencies": {
-    "@glasswing/common": "github:glasswingjs/common#7d58794",
-    "@glasswing/http": "github:glasswingjs/http#5d448cc",
-    "@glasswing/router": "github:glasswingjs/router#75b9cd6",
+    "@glasswing/common": "glasswingjs/common#5bb3ee9",
+    "@glasswing/http": "glasswingjs/http#bf41f4e",
+    "@glasswing/router": "glasswingjs/router#2a013ce",
     "tsyringe": "^4.0.1"
   },
   "gitHooks": {
